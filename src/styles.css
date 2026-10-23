@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/archivo';
+@import '@fontsource/instrument-serif';
+@import '@fontsource/instrument-serif/400-italic.css';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Archivo Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, Consolas, monospace;
+
+  --color-bg: #f2eee4;
+  --color-surface: #fbf8f0;
+  --color-surface-2: #e8e1d2;
+  --color-line: #ddd5c4;
+  --color-line-strong: #c6bca8;
+  --color-fg: #14130e;
+  --color-muted: #6a6457;
+  --color-faint: #968e7c;
+  --color-accent: #bf4a2c;
+  --color-accent-soft: #f3ddd3;
+  --color-volt: #c9f24d;
+  --color-ink: #14130e;
+  --color-ink-2: #201e17;
+
+  --radius-control: 12px;
+  --radius-card: 20px;
+  --radius-image: 24px;
+  --radius-dialog: 24px;
+
+  --shadow-soft: 0 1px 2px rgb(20 19 14 / 0.05), 0 14px 40px -18px rgb(20 19 14 / 0.2);
+  --shadow-drawer: 0 0 0 1px rgb(20 19 14 / 0.05), -20px 0 60px -20px rgb(20 19 14 / 0.32);
+
+  --animate-marquee: marquee 38s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    corner-shape: squircle;
+    border-color: var(--color-line);
+  }
+  .round,
+  .round::before,
+  .round::after {
+    corner-shape: round;
+  }
+  html {
+    background: var(--color-bg);
+    color-scheme: light;
+    overscroll-behavior-y: none;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    letter-spacing: -0.008em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--color-fg) 55%, transparent);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-volt) 70%, transparent);
+    color: var(--color-ink);
+  }
+  img {
+    user-select: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+@utility font-script {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Light staging for the shoe: warm paper, a soft pool of light and a hairline
+   of grid so the object sits in a place rather than floating. */
+@utility stage {
+  background:
+    radial-gradient(75% 68% at 50% 38%, #fdfaf2 0%, rgb(253 250 242 / 0) 72%),
+    radial-gradient(50% 50% at 50% 96%, #e4dccb 0%, rgb(228 220 203 / 0) 70%),
+    #f0ebdf;
+}
+
+@utility stage-ink {
+  background:
+    radial-gradient(70% 62% at 50% 36%, #2b2921 0%, rgb(43 41 33 / 0) 72%),
+    radial-gradient(48% 48% at 50% 100%, #0f0e0a 0%, rgb(15 14 10 / 0) 72%),
+    #1a1813;
+}
+
+@utility hairline-grid {
+  background-image:
+    linear-gradient(to right, rgb(20 19 14 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(20 19 14 / 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@utility volt-grid {
+  background-image:
+    linear-gradient(to right, rgb(201 242 77 / 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(201 242 77 / 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
